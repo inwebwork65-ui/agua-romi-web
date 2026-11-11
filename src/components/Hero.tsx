@@ -22,8 +22,8 @@ export function Hero() {
         className="pointer-events-none absolute inset-0 -z-20 size-full object-cover"
         aria-hidden="true"
       />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-[#041a33]/45" aria-hidden="true" />
-      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#041a33]/55 via-[#041a33]/10 to-transparent" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[#041a33]/15" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#041a33]/35 via-[#041a33]/5 to-transparent" aria-hidden="true" />
 
       <div className="container-page grid items-center gap-10 pb-28 pt-8 sm:gap-12 sm:pt-16 lg:min-h-[calc(100svh-5.75rem)] lg:grid-cols-[1fr_1.02fr] lg:gap-10 lg:pb-32 lg:pt-16 xl:gap-16">
         <div className="hero-copy">

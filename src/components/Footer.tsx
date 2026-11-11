@@ -24,7 +24,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
       <h2 id="footer-titulo" className="sr-only">
         Información de Agua Romi
       </h2>
-      <div className="container-page grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
+      <div className="container-page grid gap-12 py-16 sm:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.3fr]">
         <div>
           <Logo variant="white" />
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-white/85">{empresa.descripcionCorta}</p>
@@ -35,7 +35,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label={`Instagram ${redes.instagram.usuario} (se abre en una pestaña nueva)`}
-              className="grid size-11 place-items-center rounded-full bg-white/10 transition hover:bg-white/20"
+              className="grid size-11 place-items-center rounded-lg bg-white/10 transition hover:bg-white/20"
             >
               <Instagram className="size-5" aria-hidden="true" />
             </a>
@@ -45,7 +45,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={`Facebook ${redes.facebook.usuario} (se abre en una pestaña nueva)`}
-                className="grid size-11 place-items-center rounded-full bg-white/10 transition hover:bg-white/20"
+                className="grid size-11 place-items-center rounded-lg bg-white/10 transition hover:bg-white/20"
               >
                 <Facebook className="size-5" aria-hidden="true" />
               </a>
@@ -55,7 +55,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="WhatsApp (se abre en una pestaña nueva)"
-              className="grid size-11 place-items-center rounded-full bg-white/10 transition hover:bg-white/20"
+              className="grid size-11 place-items-center rounded-lg bg-white/10 transition hover:bg-white/20"
             >
               <WhatsAppIcon className="size-5" />
             </a>
@@ -63,7 +63,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
         </div>
 
         <nav aria-label="Enlaces del sitio">
-          <h3 className="text-sm font-extrabold uppercase tracking-wider text-sky">Navegación</h3>
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky">Navegación</h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {navLinks.map((l) => (
               <li key={l.href}>
@@ -72,11 +72,16 @@ export function Footer({ onSelectCategory }: FooterProps) {
                 </a>
               </li>
             ))}
+            <li>
+              <a href="#preguntas" className={linkCls}>
+                Preguntas frecuentes
+              </a>
+            </li>
           </ul>
         </nav>
 
         <nav aria-label="Categorías de productos">
-          <h3 className="text-sm font-extrabold uppercase tracking-wider text-sky">Productos</h3>
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky">Productos</h3>
           <ul className="mt-4 space-y-2.5 text-sm">
             {categorias.map((c) => (
               <li key={c.id}>
@@ -98,7 +103,7 @@ export function Footer({ onSelectCategory }: FooterProps) {
         </nav>
 
         <div>
-          <h3 className="text-sm font-extrabold uppercase tracking-wider text-sky">Contacto</h3>
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-sky">Contacto</h3>
           <ul className="mt-4 space-y-3 text-sm text-white/90">
             <li className="flex items-start gap-2.5">
               <Phone className="mt-0.5 size-4 shrink-0 text-sky" aria-hidden="true" />

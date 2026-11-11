@@ -36,10 +36,10 @@ export default function App() {
         <Categories onSelect={setCategory} />
         <Catalog category={category} onCategoryChange={setCategory} />
         <Promotions />
-        <AdVideos />
-        <AppSection />
-        <Quality />
         <Services />
+        <Quality />
+        <AppSection />
+        <AdVideos />
         <Faq />
         <Contact />
       </main>

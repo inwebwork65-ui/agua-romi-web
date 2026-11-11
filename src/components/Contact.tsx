@@ -55,75 +55,68 @@ export function Contact() {
   }
 
   const info = [
-    { icon: Phone, label: 'Teléfono', value: contacto.telefonoVisible, href: `tel:${contacto.telefonoTel}`, wide: false },
-    { icon: Instagram, label: 'Instagram', value: redes.instagram.usuario, href: redes.instagram.url, external: true, wide: false },
-    { icon: Mail, label: 'Correo electrónico', value: contacto.email, href: `mailto:${contacto.email}`, wide: true },
-    { icon: MapPin, label: 'Dirección', value: `${empresa.direccion}, ${empresa.localidad}`, href: mapLink, external: true, wide: false },
+    { icon: Phone, label: 'Teléfono', value: contacto.telefonoVisible, href: `tel:${contacto.telefonoTel}` },
+    { icon: Instagram, label: 'Instagram', value: redes.instagram.usuario, href: redes.instagram.url, external: true },
+    { icon: Mail, label: 'Correo electrónico', value: contacto.email, href: `mailto:${contacto.email}` },
+    { icon: MapPin, label: 'Dirección', value: `${empresa.direccion}, ${empresa.localidad}`, href: mapLink, external: true },
   ]
 
   return (
-    <section id="contacto" className="section-y bg-white" aria-labelledby="contacto-titulo">
+    <section id="contacto" className="bg-cloud py-20 sm:py-24 lg:pb-24 lg:pt-32" aria-labelledby="contacto-titulo">
       <div className="container-page">
-        <Reveal>
+        <Reveal className="max-w-2xl">
           <span className="eyebrow">Contacto</span>
-          <h2 id="contacto-titulo" className="section-title mt-4">
+          <h2 id="contacto-titulo" className="section-title mt-5">
             Hablemos
           </h2>
           <p className="section-lead">Escribinos para hacer tu pedido, consultar precios o coordinar una entrega.</p>
         </Reveal>
 
-        <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-12">
-          {/* Datos */}
+        <div className="mt-12 grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:gap-8">
+          {/* Datos de contacto */}
           <Reveal>
-            <div className="space-y-4">
-              <a href={buildGeneralUrl()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full !py-4 text-lg">
+            <div className="flex h-full flex-col rounded-xl bg-deep p-7 text-white sm:p-10">
+              <a href={buildGeneralUrl()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp w-full !py-4 text-base sm:text-lg">
                 <WhatsAppIcon className="size-6" />
                 Pedir por WhatsApp · {contacto.whatsappVisible}
               </a>
 
-              <ul className="grid gap-3 sm:grid-cols-2">
-                {info.map(({ icon: Icon, label, value, href, external, wide }) => (
-                  <li key={label} className={wide ? 'sm:col-span-2' : ''}>
+              <ul className="mt-8 divide-y divide-white/15">
+                {info.map(({ icon: Icon, label, value, href, external }) => (
+                  <li key={label}>
                     <a
                       href={href}
-                      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                      className="card card-hover flex h-full items-start gap-3 p-4"
+                      {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                      className="group flex items-start gap-4 py-4 transition"
                     >
-                      <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-mist text-brand-700">
-                        <Icon className="size-5" aria-hidden="true" />
-                      </span>
+                      <Icon className="mt-0.5 size-5 shrink-0 text-sky" aria-hidden="true" />
                       <span className="min-w-0">
-                        <span className="block text-xs font-bold uppercase tracking-wider text-ink-soft">{label}</span>
-                        <span className="block font-extrabold text-deep [overflow-wrap:anywhere]">{value}</span>
+                        <span className="block text-xs font-bold uppercase tracking-[0.16em] text-white/60">{label}</span>
+                        <span className="block font-bold [overflow-wrap:anywhere] group-hover:text-sky">{value}</span>
                       </span>
                     </a>
                   </li>
                 ))}
-                <li>
-                  <div className="card flex h-full items-start gap-3 p-4">
-                    <span className="grid size-10 shrink-0 place-items-center rounded-xl bg-mist text-brand-700">
-                      <Clock className="size-5" aria-hidden="true" />
-                    </span>
-                    <span className="min-w-0">
-                      <span className="block text-xs font-bold uppercase tracking-wider text-ink-soft">Horarios de atención</span>
-                      {contacto.horarios ? (
-                        <span className="block font-extrabold text-deep">{contacto.horarios}</span>
-                      ) : (
-                        <span className="flex flex-wrap items-center gap-2 font-extrabold text-deep">
-                          Consultanos por WhatsApp <ProvisionalTag />
-                        </span>
-                      )}
-                    </span>
-                  </div>
+                <li className="flex items-start gap-4 py-4">
+                  <Clock className="mt-0.5 size-5 shrink-0 text-sky" aria-hidden="true" />
+                  <span className="min-w-0">
+                    <span className="block text-xs font-bold uppercase tracking-[0.16em] text-white/60">Horarios de atención</span>
+                    {contacto.horarios ? (
+                      <span className="block font-bold">{contacto.horarios}</span>
+                    ) : (
+                      <span className="flex flex-wrap items-center gap-2 font-bold">
+                        Consultanos por WhatsApp <ProvisionalTag />
+                      </span>
+                    )}
+                  </span>
                 </li>
               </ul>
-
             </div>
           </Reveal>
 
           {/* Formulario */}
           <Reveal delay={100}>
-            <form onSubmit={handleSubmit} noValidate className="card p-6 sm:p-8" aria-labelledby={`${uid}-form-titulo`}>
+            <form onSubmit={handleSubmit} noValidate className="rounded-xl bg-white p-7 shadow-card ring-1 ring-line sm:p-10" aria-labelledby={`${uid}-form-titulo`}>
               <h3 id={`${uid}-form-titulo`} className="text-xl font-extrabold">
                 Enviá tu consulta
               </h3>
@@ -213,26 +206,26 @@ export function Contact() {
         </div>
 
         {/* Mapa */}
-        <Reveal className="mt-8">
-              <div className="card overflow-hidden">
-                <iframe
+        <Reveal className="mt-6 lg:mt-8">
+          <div className="overflow-hidden rounded-xl bg-white shadow-card ring-1 ring-line">
+            <iframe
                   title={`Mapa con la ubicación de Agua Romi en ${empresa.localidad}`}
                   src={mapEmbed}
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="block h-72 sm:h-80 w-full border-0"
+                  className="block h-72 sm:h-96 w-full border-0"
                   allowFullScreen
                 />
-                <div className="flex items-center justify-between gap-3 bg-mist/60 px-4 py-3 text-sm">
-                  <span className="font-bold text-deep">
-                    {empresa.direccion}, {empresa.localidad}
-                  </span>
-                  <a href={mapLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-1.5 font-extrabold text-brand-700 hover:text-deep">
-                    <Navigation className="size-4" aria-hidden="true" />
-                    Cómo llegar
-                  </a>
-                </div>
-              </div>
+            <div className="flex items-center justify-between gap-3 px-5 py-4 text-sm">
+              <span className="font-bold text-deep">
+                {empresa.direccion}, {empresa.localidad}
+              </span>
+              <a href={mapLink} target="_blank" rel="noopener noreferrer" className="inline-flex shrink-0 items-center gap-1.5 font-extrabold text-brand-700 hover:text-deep">
+                <Navigation className="size-4" aria-hidden="true" />
+                Cómo llegar
+              </a>
+            </div>
+          </div>
         </Reveal>
       </div>
     </section>

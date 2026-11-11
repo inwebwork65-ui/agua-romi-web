@@ -1,156 +1,90 @@
-import { ChevronLeft, ChevronRight, MapPin, Pause, Play, ShieldCheck, Snowflake } from 'lucide-react'
-import { useCallback, useEffect, useState } from 'react'
+import { ArrowRight, MapPin, ShieldCheck } from 'lucide-react'
 import { settings } from '../config/settings'
-import { heroSlides } from '../data/hero'
-import { useReducedMotion } from '../hooks/useReducedMotion'
 import { buildGeneralUrl } from '../lib/whatsapp'
+import { Waves } from './ui/Waves'
 import { WhatsAppIcon } from './ui/icons'
 
-const INTERVAL_MS = 6000
-
+/** Portada: imagen institucional de Agua Romi como protagonista + propuesta comercial. */
 export function Hero() {
-  const reduced = useReducedMotion()
-  const [index, setIndex] = useState(0)
-  const [userPaused, setUserPaused] = useState(false)
-  const [hovered, setHovered] = useState(false)
-  const total = heroSlides.length
-
-  const go = useCallback((next: number) => setIndex((next + total) % total), [total])
-  const autoplay = !reduced && !userPaused && !hovered && total > 1
-
-  useEffect(() => {
-    if (!autoplay) return
-    const id = window.setInterval(() => setIndex((i) => (i + 1) % total), INTERVAL_MS)
-    return () => window.clearInterval(id)
-  }, [autoplay, total, index])
+  const { empresa, habilitaciones } = settings
 
   return (
-    <section
-      id="inicio"
-      className="relative isolate flex min-h-[34rem] items-center overflow-hidden bg-deep text-white h-[calc(100svh-4.5rem)] max-h-[52rem]"
-      role="group"
-      aria-roledescription="carrusel"
-      aria-label="Fotos de Agua Romi"
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      onFocus={() => setHovered(true)}
-      onBlur={() => setHovered(false)}
-    >
-      {/* Imágenes dinámicas a todo el ancho y alto de la sección */}
-      {heroSlides.map((slide, i) => (
-        <figure
-          key={slide.id}
-          className={`absolute inset-0 -z-10 m-0 transition-opacity duration-1000 ease-in-out ${i === index ? "opacity-100" : "pointer-events-none opacity-0"}`}
-          aria-hidden={i !== index}
-          aria-roledescription="diapositiva"
-          aria-label={`${i + 1} de ${total}`}
-        >
-          <img
-            src={slide.imagen}
-            alt={slide.alt}
-            width={1400}
-            height={1050}
-            loading={i === 0 ? "eager" : "lazy"}
-            fetchPriority={i === 0 ? "high" : "auto"}
-            decoding="async"
-            className="size-full object-cover"
-            style={{ objectPosition: slide.posicion ?? "center" }}
-          />
-        </figure>
-      ))}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-deep/85 via-deep/45 to-transparent" aria-hidden="true" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-deep/70 to-transparent" aria-hidden="true" />
+    <section id="inicio" className="relative isolate overflow-hidden bg-mist" aria-labelledby="hero-titulo">
+      {/* Fondo: círculo suave de color, una sola forma */}
+      <div className="pointer-events-none absolute -right-40 -top-40 -z-10 size-[44rem] rounded-full bg-white/70" aria-hidden="true" />
 
-      <div className="container-page relative py-12">
-        <div className="max-w-2xl">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-widest text-white ring-1 ring-white/30 backdrop-blur">
-            <MapPin className="size-3.5" aria-hidden="true" />
-            Villa Cañas, Santa Fe
-          </span>
-          <h1 className="mt-5 text-4xl font-extrabold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl">
-            Agua y frescura <span className="text-sky">para todos los días</span>
-          </h1>
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/90">
-            Conocé nuestros productos y encontrá la opción ideal para tu hogar, comercio o empresa.
+      <div className="container-page grid items-center gap-10 pb-28 pt-8 sm:gap-12 sm:pt-16 lg:min-h-[calc(100svh-7.25rem)] lg:grid-cols-[1fr_1.02fr] lg:gap-10 lg:pb-32 lg:pt-16 xl:gap-16">
+        <div className="hero-copy">
+          <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-700">
+            <MapPin className="size-4" aria-hidden="true" />
+            {empresa.localidad}
           </p>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a href="#productos" className="btn-primary px-7 py-3 text-base">
+          <h1
+            id="hero-titulo"
+            className="mt-5 text-[2.3rem] font-extrabold leading-[1.06] tracking-[-0.03em] sm:text-6xl lg:text-[3.3rem] xl:text-[4rem]"
+          >
+            Agua, soda e hielo.
+            <span className="mt-1 block text-brand">La frescura que llega a tu hogar.</span>
+          </h1>
+
+          <p className="mt-5 max-w-lg text-base leading-relaxed text-ink-soft sm:mt-6 sm:text-xl">
+            Productos de calidad y atención cercana para hogares, comercios y empresas.
+          </p>
+
+          <div className="mt-7 flex flex-col gap-3 sm:mt-9 sm:flex-row">
+            <a href="#productos" className="btn-primary group px-8 py-3.5 text-base">
               Ver productos
+              <ArrowRight className="size-[1.1rem] transition-transform group-hover:translate-x-1" aria-hidden="true" />
             </a>
-            <a href={buildGeneralUrl()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp px-7 py-3 text-base">
+            <a href={buildGeneralUrl()} target="_blank" rel="noopener noreferrer" className="btn-whatsapp px-8 py-3.5 text-base">
               <WhatsAppIcon className="size-5" />
               Hacer un pedido
             </a>
           </div>
 
-          <ul className="mt-9 grid gap-3 text-sm font-bold text-white sm:grid-cols-3">
-            <li className="flex items-center gap-2.5">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur">
-                <Snowflake className="size-[18px]" aria-hidden="true" />
-              </span>
-              Agua, soda e hielo
-            </li>
-            <li className="flex items-center gap-2.5">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur">
-                <ShieldCheck className="size-[18px]" aria-hidden="true" />
-              </span>
-              Controles {settings.habilitaciones.autoridadCorta}
-            </li>
-            <li className="flex items-center gap-2.5">
-              <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white/15 ring-1 ring-white/30 backdrop-blur">
-                <WhatsAppIcon className="size-[18px]" />
-              </span>
-              Pedidos por WhatsApp
-            </li>
-          </ul>
+          <dl className="mt-12 hidden max-w-xl grid-cols-3 sm:grid divide-x divide-deep/15 border-t border-deep/15 pt-6">
+            {[
+              ['Agua', 'bidones de 12 y 20 L'],
+              ['Soda', 'retornable de 1,5 L'],
+              ['Hielo', 'en bolsa'],
+            ].map(([t, d]) => (
+              <div key={t} className="px-4 first:pl-0 last:pr-0">
+                <dt className="text-lg font-extrabold text-deep">{t}</dt>
+                <dd className="mt-0.5 text-[0.8rem] leading-snug text-ink-soft">{d}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+
+        {/* Imagen protagonista */}
+        <div className="relative mx-auto w-full max-w-[40rem] lg:max-w-none">
+          <div className="absolute -bottom-5 -left-5 hidden size-3/4 rounded-xl bg-brand/15 sm:block" aria-hidden="true" />
+          <figure className="relative m-0 overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-30px_rgb(16_59_101/0.55)] ring-1 ring-deep/10">
+            <img
+              src="/images/hero-romi.webp"
+              alt="Hielo y Agua Romi: una niña sostiene un vaso de agua junto al dispenser, bidones, sifón de soda y bolsa de hielo"
+              width={1080}
+              height={978}
+              fetchPriority="high"
+              decoding="async"
+              className="block h-auto w-full"
+            />
+          </figure>
+
+          <div className="absolute -top-5 right-4 flex items-center gap-3 rounded-lg bg-white px-4 py-3 shadow-lift ring-1 ring-line sm:right-6">
+            <span className="grid size-10 place-items-center rounded-md bg-mist text-brand-700">
+              <ShieldCheck className="size-5" aria-hidden="true" />
+            </span>
+            <span className="leading-tight">
+              <span className="block text-[11px] font-extrabold uppercase tracking-wider text-ink-soft">Planta habilitada</span>
+              <span className="block text-sm font-extrabold text-deep">{habilitaciones.autoridadCorta}</span>
+            </span>
+          </div>
         </div>
       </div>
 
-      {total > 1 && (
-        <div className="absolute inset-x-0 bottom-4 flex items-center justify-center gap-3">
-          <button
-            type="button"
-            onClick={() => go(index - 1)}
-            aria-label="Foto anterior"
-            className="grid size-10 place-items-center rounded-full bg-white/90 text-deep shadow-card transition hover:bg-white"
-          >
-            <ChevronLeft className="size-5" aria-hidden="true" />
-          </button>
-          <div className="flex items-center gap-2">
-            {heroSlides.map((slide, i) => (
-              <button
-                key={slide.id}
-                type="button"
-                onClick={() => go(i)}
-                aria-label={`Ver foto ${i + 1}: ${slide.etiqueta}`}
-                aria-current={i === index}
-                className="grid size-6 place-items-center"
-              >
-                <span className={`block h-2.5 rounded-full transition-all duration-300 ${i === index ? "w-8 bg-white" : "w-2.5 bg-white/50 hover:bg-white/80"}`} />
-              </button>
-            ))}
-          </div>
-          <button
-            type="button"
-            onClick={() => go(index + 1)}
-            aria-label="Foto siguiente"
-            className="grid size-10 place-items-center rounded-full bg-white/90 text-deep shadow-card transition hover:bg-white"
-          >
-            <ChevronRight className="size-5" aria-hidden="true" />
-          </button>
-          {!reduced && (
-            <button
-              type="button"
-              onClick={() => setUserPaused((v) => !v)}
-              aria-label={userPaused ? "Reanudar cambio automático de fotos" : "Pausar cambio automático de fotos"}
-              className="grid size-9 place-items-center rounded-full bg-white/20 text-white transition hover:bg-white/30"
-            >
-              {userPaused ? <Play className="size-4" aria-hidden="true" /> : <Pause className="size-4" aria-hidden="true" />}
-            </button>
-          )}
-        </div>
-      )}
+      <Waves className="text-white" />
     </section>
   )
 }

@@ -1,4 +1,4 @@
-import { ArrowRight, MessageCircle } from 'lucide-react'
+import { ArrowUpRight, MessageCircle } from 'lucide-react'
 import { categorias } from '../data/categories'
 import { productos } from '../data/products'
 import { buildGeneralUrl } from '../lib/whatsapp'
@@ -8,6 +8,7 @@ interface CategoriesProps {
   onSelect: (categoryId: string) => void
 }
 
+/** Categorías visuales: atajos con fotografía que filtran el catálogo. */
 export function Categories({ onSelect }: CategoriesProps) {
   const handleSelect = (id: string) => {
     onSelect(id)
@@ -16,75 +17,77 @@ export function Categories({ onSelect }: CategoriesProps) {
   }
 
   return (
-    <section id="categorias" className="section-y bg-white" aria-labelledby="categorias-titulo">
+    <section id="categorias" className="bg-cloud pb-4 pt-20 sm:pt-24 lg:pt-28" aria-labelledby="categorias-titulo">
       <div className="container-page">
-        <Reveal>
-          <span className="eyebrow">Categorías</span>
-          <h2 id="categorias-titulo" className="section-title mt-4">
-            Encontrá lo que necesitás
-          </h2>
-          <p className="section-lead">Elegí una categoría para ver las presentaciones disponibles.</p>
+        <Reveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <div>
+            <span className="eyebrow">Categorías</span>
+            <h2 id="categorias-titulo" className="section-title mt-5">
+              Encontrá lo que necesitás
+            </h2>
+          </div>
+          <p className="max-w-sm text-ink-soft">Elegí una categoría para ver las presentaciones disponibles.</p>
         </Reveal>
 
-        <ul className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {categorias.map((cat, i) => {
             const count = productos.filter((p) => p.categoriaId === cat.id).length
             return (
               <li key={cat.id}>
                 <Reveal delay={i * 80} className="h-full">
-                  <article className="card card-hover group flex h-full flex-col overflow-hidden">
-                    <div className="aspect-[4/3] overflow-hidden bg-mist">
-                      <img
-                        src={cat.imagen}
-                        alt={cat.imagenAlt}
-                        width={720}
-                        height={540}
-                        loading="lazy"
-                        decoding="async"
-                        className="size-full object-cover object-[center_40%] transition duration-500 group-hover:scale-105"
-                      />
-                    </div>
-                    <div className="flex flex-1 flex-col p-5">
-                      <h3 className="text-lg font-extrabold">{cat.nombre}</h3>
-                      <p className="mt-1.5 flex-1 text-sm leading-relaxed text-ink-soft">{cat.descripcion}</p>
-                      <button
-                        type="button"
-                        onClick={() => handleSelect(cat.id)}
-                        aria-label={`Ver productos de ${cat.nombre}`}
-                        className="mt-4 inline-flex items-center gap-1.5 self-start rounded-full text-sm font-extrabold text-brand-700 transition hover:gap-2.5 hover:text-deep"
-                      >
-                        Ver productos{count > 0 && <span className="font-semibold text-ink-soft">({count})</span>}
-                        <ArrowRight className="size-4" aria-hidden="true" />
-                      </button>
-                    </div>
-                  </article>
+                  <button
+                    type="button"
+                    onClick={() => handleSelect(cat.id)}
+                    aria-label={`Ver productos de ${cat.nombre}`}
+                    className="group relative block aspect-[4/5] w-full overflow-hidden rounded-xl bg-deep text-left sm:aspect-[3/4]"
+                  >
+                    <img
+                      src={cat.imagen}
+                      alt={cat.imagenAlt}
+                      width={720}
+                      height={900}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 size-full object-cover transition duration-700 group-hover:scale-[1.04]"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-deep/85 via-deep/10 to-transparent" aria-hidden="true" />
+                    <span className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-5 text-white">
+                      <span>
+                        <span className="block text-xl font-extrabold leading-tight">{cat.nombre}</span>
+                        {count > 0 && (
+                          <span className="mt-1 block text-sm font-semibold text-white/80">
+                            {count} {count === 1 ? 'producto' : 'productos'}
+                          </span>
+                        )}
+                      </span>
+                      <span className="grid size-10 shrink-0 place-items-center rounded-full bg-white text-deep transition group-hover:bg-sky">
+                        <ArrowUpRight className="size-5" aria-hidden="true" />
+                      </span>
+                    </span>
+                  </button>
                 </Reveal>
               </li>
             )
           })}
 
-          {/* Tarjeta de consulta para otros productos */}
+          {/* Consulta por otros productos */}
           <li>
             <Reveal delay={categorias.length * 80} className="h-full">
-              <article className="card card-hover flex h-full flex-col justify-between border-dashed bg-mist/60 p-6">
+              <div className="flex aspect-[4/5] flex-col justify-between rounded-xl bg-deep p-6 text-white sm:aspect-[3/4]">
+                <MessageCircle className="size-8 text-sky" aria-hidden="true" />
                 <div>
-                  <span className="grid size-12 place-items-center rounded-2xl bg-white text-brand-700 shadow-card">
-                    <MessageCircle className="size-6" aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-4 text-lg font-extrabold">¿Buscás otro producto?</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">
-                    Escribinos y te contamos qué más tenemos disponible.
-                  </p>
+                  <h3 className="text-xl font-extrabold !text-white">¿Buscás otro producto?</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-white/80">Escribinos y te contamos qué más tenemos disponible.</p>
+                  <a
+                    href={buildGeneralUrl('Hola Agua Romi! Quisiera consultar por otros productos.')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-light mt-5"
+                  >
+                    Consultar por WhatsApp
+                  </a>
                 </div>
-                <a
-                  href={buildGeneralUrl('Hola Agua Romi! Quisiera consultar por otros productos.')}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="btn-outline mt-5 self-start"
-                >
-                  Consultar por WhatsApp
-                </a>
-              </article>
+              </div>
             </Reveal>
           </li>
         </ul>

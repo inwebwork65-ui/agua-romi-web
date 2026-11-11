@@ -8,17 +8,18 @@
 @theme {
   --font-sans: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
-  --color-brand: #168fcb; /* Azul principal */
-  --color-brand-700: #0e78ae; /* Azul principal oscurecido: texto/botones con buen contraste sobre blanco */
-  --color-deep: #123d70; /* Azul profundo */
-  --color-sky: #36bceb; /* Celeste brillante */
-  --color-mist: #eaf8fd; /* Celeste suave */
-  --color-cloud: #f4f7fa; /* Gris claro */
+  --color-brand: #168fce; /* Azul principal */
+  --color-brand-700: #0f78b0; /* Azul principal oscurecido: texto/botones con buen contraste sobre blanco */
+  --color-deep: #103b65; /* Azul profundo */
+  --color-sky: #5cc4ef; /* Celeste de acento (sobre fondos oscuros) */
+  --color-mist: #eaf7fc; /* Celeste suave */
+  --color-cloud: #f5f7f9; /* Gris muy claro */
   --color-ink: #263746; /* Gris oscuro para textos */
   --color-ink-soft: #4a5b6b; /* Texto secundario (contraste AA sobre blanco) */
+  --color-line: #dfe7ee; /* Líneas finas */
 
-  --shadow-card: 0 1px 2px rgb(18 61 112 / 0.06), 0 8px 24px -12px rgb(18 61 112 / 0.18);
-  --shadow-lift: 0 2px 4px rgb(18 61 112 / 0.06), 0 18px 40px -16px rgb(18 61 112 / 0.28);
+  --shadow-card: 0 1px 2px rgb(16 59 101 / 0.05), 0 6px 20px -12px rgb(16 59 101 / 0.16);
+  --shadow-lift: 0 2px 4px rgb(16 59 101 / 0.05), 0 20px 44px -20px rgb(16 59 101 / 0.3);
 }
 
 @layer base {
@@ -53,51 +54,59 @@
 }
 
 @utility btn {
-  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-bold transition duration-200 active:scale-[0.98] sm:text-base;
+  @apply inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-5 py-2.5 text-sm font-bold tracking-[0.01em] transition duration-200 active:scale-[0.98] sm:text-[0.95rem];
 }
 
 @layer components {
   .container-page {
-    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+    @apply mx-auto w-full max-w-7xl px-5 sm:px-8 lg:px-10;
   }
   .section-y {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-20 sm:py-24 lg:py-32;
   }
+  /* Sobretítulo editorial: línea fina + texto en mayúsculas */
   .eyebrow {
-    @apply inline-flex items-center gap-2 rounded-full bg-mist px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-700;
+    @apply inline-flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-700 before:h-px before:w-8 before:bg-brand;
+  }
+  .eyebrow-light {
+    @apply inline-flex items-center gap-3 text-xs font-extrabold uppercase tracking-[0.2em] text-sky before:h-px before:w-8 before:bg-sky;
   }
   .section-title {
-    @apply text-3xl font-extrabold leading-tight tracking-tight sm:text-4xl;
+    @apply text-[2rem] font-extrabold leading-[1.1] tracking-[-0.02em] sm:text-4xl lg:text-[2.9rem];
   }
   .section-lead {
-    @apply mt-3 max-w-2xl text-base text-ink-soft sm:text-lg;
+    @apply mt-4 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg;
   }
 
   .btn-primary {
-    @apply btn bg-brand-700 text-white shadow-sm hover:bg-deep hover:shadow-md;
+    @apply btn bg-brand-700 text-white hover:bg-deep hover:shadow-[0_10px_24px_-12px_rgb(16_59_101/0.55)];
   }
   .btn-whatsapp {
-    @apply btn bg-[#128c4a] text-white shadow-sm hover:bg-[#0d6e3a] hover:shadow-md;
+    @apply btn bg-[#128c4a] text-white hover:bg-[#0d6e3a] hover:shadow-[0_10px_24px_-12px_rgb(13_110_58/0.6)];
   }
   .btn-outline {
-    @apply btn border-2 border-brand-700 bg-white text-brand-700 hover:bg-mist;
+    @apply btn border border-deep/25 bg-transparent text-deep hover:border-deep hover:bg-deep hover:text-white;
   }
   .btn-ghost {
     @apply btn text-deep hover:bg-mist;
+  }
+  .btn-light {
+    @apply btn bg-white text-deep hover:bg-mist;
   }
   .btn-sm {
     @apply min-h-9 px-4 py-1.5 text-sm sm:text-sm;
   }
 
+  /* Tarjeta sobria: borde fino, sombra mínima */
   .card {
-    @apply rounded-3xl border border-sky/20 bg-white shadow-card transition duration-300;
+    @apply rounded-2xl border border-line bg-white shadow-card transition duration-300;
   }
   .card-hover {
-    @apply hover:-translate-y-1 hover:shadow-lift;
+    @apply hover:-translate-y-0.5 hover:border-brand/40 hover:shadow-lift;
   }
 
   .field {
-    @apply w-full rounded-xl border border-slate-300 bg-white px-4 py-2.5 text-base text-ink placeholder:text-slate-500 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-sky/30;
+    @apply w-full rounded-lg border border-slate-300 bg-white px-4 py-2.5 text-base text-ink placeholder:text-slate-500 transition focus:border-brand focus:outline-none focus:ring-4 focus:ring-brand/20;
   }
   .field[aria-invalid="true"] {
     @apply border-red-600 focus:ring-red-200;
@@ -193,6 +202,34 @@
 }
 .anim-rise {
   animation: rise 0.28s ease;
+}
+
+/* Olas decorativas: el trazo se repite, por lo que el desplazamiento del 50% es continuo */
+.anim-wave {
+  animation: drift 32s linear infinite;
+}
+.anim-wave-slow {
+  animation: drift 52s linear infinite reverse;
+}
+
+/* Subrayado animado de los enlaces del menú */
+.nav-link {
+  position: relative;
+}
+.nav-link::after {
+  content: "";
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0.15rem;
+  height: 2px;
+  background: var(--color-brand);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.28s ease;
+}
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
 }
 
 /* Ocultar barra de scroll en carruseles horizontales */

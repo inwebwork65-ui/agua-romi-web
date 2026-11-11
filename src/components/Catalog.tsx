@@ -35,7 +35,9 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
   const hasPrices = productos.some((p) => p.precio != null)
   const availableFlags = useMemo(() => {
     const flags: { key: FlagKey; label: string }[] = []
-    if (productos.some((p) => p.destacado)) flags.push({ key: 'destacado', label: 'Destacados' })
+    // Un filtro sólo aporta si separa algunos productos de otros.
+    const splits = (k: FlagKey) => productos.some((p) => p[k as 'destacado']) && !productos.every((p) => p[k as 'destacado'])
+    if (splits('destacado')) flags.push({ key: 'destacado', label: 'Destacados' })
     if (productos.some((p) => p.oferta)) flags.push({ key: 'oferta', label: 'Ofertas' })
     if (productos.some((p) => p.novedad)) flags.push({ key: 'novedad', label: 'Novedades' })
     return flags
@@ -74,22 +76,22 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
 
   const chip = (active: boolean) =>
     `shrink-0 rounded-full border px-4 py-2 text-sm font-bold transition ${
-      active ? 'border-brand-700 bg-brand-700 text-white' : 'border-slate-300 bg-white text-deep hover:border-brand hover:bg-mist'
+      active ? 'border-deep bg-deep text-white' : 'border-line bg-white text-deep hover:border-brand hover:text-brand-700'
     }`
 
   return (
-    <section id="productos" className="section-y bg-cloud" aria-labelledby="catalogo-titulo">
+    <section id="productos" className="bg-cloud pb-24 pt-16 sm:pb-28 lg:pb-32 lg:pt-20" aria-labelledby="catalogo-titulo">
       <div className="container-page">
-        <Reveal>
+        <Reveal className="border-t border-line pt-16 lg:pt-20">
           <span className="eyebrow">Catálogo</span>
-          <h2 id="catalogo-titulo" className="section-title mt-4">
+          <h2 id="catalogo-titulo" className="section-title mt-5">
             Nuestros productos
           </h2>
           <p className="section-lead">Agregá lo que necesitás a tu pedido y envialo por WhatsApp.</p>
         </Reveal>
 
         {settings.catalogo.avisoDemo && (
-          <p className="mt-6 flex items-start gap-2.5 rounded-2xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950">
+          <p className="mt-6 flex items-start gap-2.5 rounded-lg border border-amber-300/70 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950">
             <Info className="mt-0.5 size-5 shrink-0" aria-hidden="true" />
             <span>
               Catálogo de demostración: los precios y la disponibilidad se confirman por WhatsApp al enviar tu pedido.
@@ -98,7 +100,7 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
         )}
 
         {/* Barra de filtros */}
-        <div className="card mt-6 space-y-4 p-4 sm:p-5">
+        <div className="mt-8 space-y-5 rounded-xl border border-line bg-white p-4 sm:p-6">
           <div className="grid gap-4 md:grid-cols-[1fr_16rem]">
             <div>
               <label htmlFor={`${uid}-buscar`} className="label">
@@ -199,7 +201,7 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
         </div>
 
         {visible.length > 0 ? (
-          <ul className="mt-4 grid gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          <ul className="mt-5 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {visible.map((p, i) => (
               <li key={p.id}>
                 <Reveal delay={Math.min(i, 3) * 70} className="h-full">

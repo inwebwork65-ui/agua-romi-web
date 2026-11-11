@@ -1,3 +1,5 @@
+import '@fontsource-variable/montserrat/wght.css'
+import '@fontsource-variable/montserrat/wght-italic.css'
 import { ArrowRight, BadgeCheck, MapPin } from 'lucide-react'
 import { settings } from '../config/settings'
 import { buildGeneralUrl } from '../lib/whatsapp'
@@ -9,26 +11,39 @@ export function Hero() {
   const { empresa, habilitaciones } = settings
 
   return (
-    <section id="inicio" className="relative isolate overflow-hidden bg-mist" aria-labelledby="hero-titulo">
-      {/* Fondo: círculo suave de color, una sola forma */}
-      <div className="pointer-events-none absolute -right-40 -top-40 -z-10 size-[44rem] rounded-full bg-white/70" aria-hidden="true" />
+    <section id="inicio" className="relative isolate overflow-hidden bg-[#06223f]" aria-labelledby="hero-titulo">
+      {/* Fondo: agua en movimiento con salpicadura + capa azul marino semitransparente para legibilidad */}
+      <img
+        src="/images/hero-agua-splash.webp"
+        alt=""
+        width={1920}
+        height={1080}
+        decoding="async"
+        className="pointer-events-none absolute inset-0 -z-20 size-full object-cover"
+        aria-hidden="true"
+      />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-[#041a33]/45" aria-hidden="true" />
+      <div className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-[#041a33]/55 via-[#041a33]/10 to-transparent" aria-hidden="true" />
 
-      <div className="container-page grid items-center gap-10 pb-28 pt-8 sm:gap-12 sm:pt-16 lg:min-h-[calc(100svh-7.25rem)] lg:grid-cols-[1fr_1.02fr] lg:gap-10 lg:pb-32 lg:pt-16 xl:gap-16">
+      <div className="container-page grid items-center gap-10 pb-28 pt-8 sm:gap-12 sm:pt-16 lg:min-h-[calc(100svh-5.75rem)] lg:grid-cols-[1fr_1.02fr] lg:gap-10 lg:pb-32 lg:pt-16 xl:gap-16">
         <div className="hero-copy">
-          <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-brand-700">
+          <p className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-[0.2em] text-sky">
             <MapPin className="size-4" aria-hidden="true" />
             {empresa.localidad}
           </p>
 
-          <h1
-            id="hero-titulo"
-            className="mt-5 text-[2.3rem] font-extrabold leading-[1.06] tracking-[-0.03em] sm:text-6xl lg:text-[3.3rem] xl:text-[4rem]"
-          >
-            Agua, soda e hielo.
-            <span className="mt-1 block text-brand">La frescura que llega a tu hogar.</span>
+          <h1 id="hero-titulo" className="mt-5 text-white">
+            <span className="block text-[2.4rem] font-extrabold uppercase leading-[1.02] tracking-[-0.01em] [font-family:'Montserrat_Variable','Manrope_Variable',sans-serif] sm:text-6xl lg:text-[3.4rem] xl:text-[4.1rem]">
+              Agua, soda
+              <br />e hielo.
+            </span>
+            <span className="mt-3 block text-[1.7rem] font-medium italic leading-[1.15] tracking-[-0.005em] text-sky [font-family:'Montserrat_Variable','Manrope_Variable',sans-serif] sm:text-4xl lg:text-[2.4rem] xl:text-[2.9rem]">
+              La frescura que
+              <br />llega a tu hogar.
+            </span>
           </h1>
 
-          <p className="mt-5 max-w-lg text-base leading-relaxed text-ink-soft sm:mt-6 sm:text-xl">
+          <p className="mt-6 max-w-lg text-base leading-relaxed text-white/85 sm:text-xl">
             Productos de calidad y atención cercana para hogares, comercios y empresas.
           </p>
 
@@ -43,15 +58,15 @@ export function Hero() {
             </a>
           </div>
 
-          <dl className="mt-12 hidden max-w-xl grid-cols-3 sm:grid divide-x divide-deep/15 border-t border-deep/15 pt-6">
+          <dl className="mt-12 hidden max-w-xl grid-cols-3 sm:grid divide-x divide-white/20 border-t border-white/20 pt-6">
             {[
               ['Agua', 'bidones de 12 y 20 L'],
               ['Soda', 'retornable de 1,5 L'],
               ['Hielo', 'en bolsa'],
             ].map(([t, d]) => (
               <div key={t} className="px-4 first:pl-0 last:pr-0">
-                <dt className="text-lg font-extrabold text-deep">{t}</dt>
-                <dd className="mt-0.5 text-[0.8rem] leading-snug text-ink-soft">{d}</dd>
+                <dt className="text-lg font-extrabold text-white">{t}</dt>
+                <dd className="mt-0.5 text-[0.8rem] leading-snug text-white/70">{d}</dd>
               </div>
             ))}
           </dl>
@@ -75,8 +90,8 @@ export function Hero() {
           </div>
 
           {/* Habilitación: detalle tipográfico, sin tarjeta y fuera de la fotografía */}
-          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-deep/70 lg:justify-end">
-            <BadgeCheck className="size-4 text-brand" aria-hidden="true" />
+          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-white/75 lg:justify-end">
+            <BadgeCheck className="size-4 text-sky" aria-hidden="true" />
             Planta habilitada · {habilitaciones.autoridadCorta}
           </p>
         </div>

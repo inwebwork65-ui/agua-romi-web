@@ -80,14 +80,14 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
     }`
 
   return (
-    <section id="productos" className="bg-cloud pb-24 pt-16 sm:pb-28 lg:pb-32 lg:pt-20" aria-labelledby="catalogo-titulo">
+    <section id="productos" className="bg-cloud pb-16 pt-16 sm:pt-20 lg:pb-20 lg:pt-24" aria-labelledby="catalogo-titulo">
       <div className="container-page">
-        <Reveal className="border-t border-line pt-16 lg:pt-20">
+        <Reveal>
           <span className="eyebrow">Catálogo</span>
           <h2 id="catalogo-titulo" className="section-title mt-5">
             Nuestros productos
           </h2>
-          <p className="section-lead">Agregá lo que necesitás a tu pedido y envialo por WhatsApp.</p>
+          <p className="section-lead">Todo lo que necesitás para disfrutar de agua, soda e hielo.</p>
         </Reveal>
 
         {settings.catalogo.avisoDemo && (

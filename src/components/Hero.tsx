@@ -1,4 +1,4 @@
-import { ArrowRight, MapPin, ShieldCheck } from 'lucide-react'
+import { ArrowRight, BadgeCheck, MapPin } from 'lucide-react'
 import { settings } from '../config/settings'
 import { buildGeneralUrl } from '../lib/whatsapp'
 import { Waves } from './ui/Waves'
@@ -57,34 +57,32 @@ export function Hero() {
           </dl>
         </div>
 
-        {/* Imagen protagonista */}
+        {/* Imagen protagonista: flota suavemente (se detiene con "reducir movimiento") */}
         <div className="relative mx-auto w-full max-w-[40rem] lg:max-w-none">
-          <div className="absolute -bottom-5 -left-5 hidden size-3/4 rounded-xl bg-brand/15 sm:block" aria-hidden="true" />
-          <figure className="relative m-0 overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-30px_rgb(16_59_101/0.55)] ring-1 ring-deep/10">
-            <img
-              src="/images/hero-romi.webp"
-              alt="Hielo y Agua Romi: una niña sostiene un vaso de agua junto al dispenser, bidones, sifón de soda y bolsa de hielo"
-              width={1080}
-              height={978}
-              fetchPriority="high"
-              decoding="async"
-              className="block h-auto w-full"
-            />
-          </figure>
-
-          <div className="absolute -top-5 right-4 flex items-center gap-3 rounded-lg bg-white px-4 py-3 shadow-lift ring-1 ring-line sm:right-6">
-            <span className="grid size-10 place-items-center rounded-md bg-mist text-brand-700">
-              <ShieldCheck className="size-5" aria-hidden="true" />
-            </span>
-            <span className="leading-tight">
-              <span className="block text-[11px] font-extrabold uppercase tracking-wider text-ink-soft">Planta habilitada</span>
-              <span className="block text-sm font-extrabold text-deep">{habilitaciones.autoridadCorta}</span>
-            </span>
+          <div className="anim-float-slow relative">
+            <div className="absolute -bottom-5 -left-5 hidden size-3/4 rounded-xl bg-brand/15 sm:block" aria-hidden="true" />
+            <figure className="relative m-0 overflow-hidden rounded-xl bg-white shadow-[0_30px_60px_-30px_rgb(16_59_101/0.55)] ring-1 ring-deep/10">
+              <img
+                src="/images/hero-romi.webp"
+                alt="Hielo y Agua Romi: una niña sostiene un vaso de agua junto al dispenser, bidones, sifón de soda y bolsa de hielo"
+                width={1080}
+                height={978}
+                fetchPriority="high"
+                decoding="async"
+                className="block h-auto w-full"
+              />
+            </figure>
           </div>
+
+          {/* Habilitación: detalle tipográfico, sin tarjeta y fuera de la fotografía */}
+          <p className="mt-8 flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-deep/70 lg:justify-end">
+            <BadgeCheck className="size-4 text-brand" aria-hidden="true" />
+            Planta habilitada · {habilitaciones.autoridadCorta}
+          </p>
         </div>
       </div>
 
-      <Waves className="text-white" />
+      <Waves className="text-cloud" />
     </section>
   )
 }

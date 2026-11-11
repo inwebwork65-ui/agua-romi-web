@@ -6,7 +6,7 @@ import { iconMap } from './ui/icons'
 /** Quiénes somos: presentación institucional con fotografías reales del equipo y del local. */
 export function About() {
   return (
-    <section id="nosotros" className="section-y bg-white" aria-labelledby="nosotros-titulo">
+    <section id="nosotros" className="section-y bg-cloud" aria-labelledby="nosotros-titulo">
       <div className="container-page grid items-center gap-14 lg:grid-cols-[0.95fr_1.05fr] lg:gap-20">
         <Reveal>
           <div className="relative pb-12 pr-8 sm:pr-14">
@@ -24,7 +24,7 @@ export function About() {
               width={1200}
               height={900}
               loading="lazy"
-              className="absolute bottom-0 right-0 aspect-[4/3] w-3/5 rounded-xl border-[6px] border-white object-cover shadow-lift"
+              className="absolute bottom-0 right-0 aspect-[4/3] w-3/5 rounded-xl border-[6px] border-cloud object-cover shadow-lift"
             />
           </div>
         </Reveal>
@@ -53,7 +53,7 @@ export function About() {
             })}
           </ul>
 
-          <div className="mt-8 border-l-2 border-brand/40 bg-cloud py-3 pl-5 pr-4">
+          <div className="mt-8 border-l-2 border-brand/40 bg-white py-3 pl-5 pr-4">
             <h3 className="flex flex-wrap items-center gap-2 text-sm font-extrabold">
               {nosotros.historia.titulo}
               {nosotros.historia.provisional && <ProvisionalTag />}

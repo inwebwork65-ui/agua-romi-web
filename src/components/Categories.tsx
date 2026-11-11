@@ -17,8 +17,8 @@ export function Categories({ onSelect }: CategoriesProps) {
   }
 
   return (
-    <section id="categorias" className="bg-cloud pb-4 pt-20 sm:pt-24 lg:pt-28" aria-labelledby="categorias-titulo">
-      <div className="container-page">
+    <section id="categorias" className="bg-cloud pb-24 sm:pb-28 lg:pb-32" aria-labelledby="categorias-titulo">
+      <div className="container-page border-t border-line pt-16 lg:pt-20">
         <Reveal className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <div>
             <span className="eyebrow">Categorías</span>

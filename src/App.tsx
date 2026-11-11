@@ -32,12 +32,12 @@ export default function App() {
       <Header />
       <main id="contenido">
         <Hero />
-        <About />
-        <Categories onSelect={setCategory} />
         <Catalog category={category} onCategoryChange={setCategory} />
+        <Categories onSelect={setCategory} />
         <Promotions />
         <Services />
         <Quality />
+        <About />
         <AppSection />
         <AdVideos />
         <Faq />

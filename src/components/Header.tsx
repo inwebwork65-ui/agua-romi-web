@@ -7,10 +7,10 @@ import { Logo } from './ui/Logo'
 import { WhatsAppIcon } from './ui/icons'
 
 export const navLinks = [
-  { href: '#nosotros', label: 'Nosotros' },
   { href: '#productos', label: 'Productos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#calidad', label: 'Calidad' },
+  { href: '#nosotros', label: 'Nosotros' },
   { href: '#contacto', label: 'Contacto' },
 ]
 

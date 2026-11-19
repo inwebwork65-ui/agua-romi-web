@@ -32,8 +32,8 @@ export const settings = {
     telefonoVisible: '03462 15596926',
     telefonoTel: '+5493462596926',
     email: 'aguahieloromi@gmail.com',
-    /** `null` = "A confirmar". Ejemplo: 'Lunes a sábados de 8 a 18 h'. */
-    horarios: null as string | null,
+    /** Horarios de atención informados por la empresa. `null` = se muestra "A confirmar". */
+    horarios: 'Lunes a viernes de 8:00 a 12:00 y de 15:00 a 19:00 · Sábados de 8:00 a 12:00 · Domingos cerrado' as string | null,
     /** Texto usado para el mapa embebido y el botón "Cómo llegar". */
     mapaConsulta: 'Calle 44 Bis 132, Villa Cañas, Santa Fe, Argentina',
   },

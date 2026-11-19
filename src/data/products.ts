@@ -36,8 +36,8 @@ export const productos: Product[] = [
     presentacion: '12 litros',
     descripcion: 'Agua Romi en bidón de 12 litros, una opción más liviana para el día a día.',
     categoriaId: 'bidones',
-    imagen: '/images/prod-bidon.webp',
-    imagenAlt: 'Bidón de agua Romi (imagen ilustrativa)',
+    imagen: '/images/prod-bidon-12.webp',
+    imagenAlt: 'Bidón de agua Romi de 12 litros',
     precio: null,
     disponibilidad: 'consultar',
     destacado: true,
@@ -68,4 +68,24 @@ export const productos: Product[] = [
     disponibilidad: 'consultar',
     destacado: true,
   },
+  {
+    id: 'dispenser-frio-calor',
+    nombre: 'Dispenser de agua frío/calor',
+    marca: 'Aquadisp',
+    presentacion: 'Frío y calor',
+    descripcion: 'Dispenser de agua con salida de agua fría y de agua caliente, para bidones.',
+    categoriaId: 'dispensers',
+    imagen: '/images/prod-dispenser.webp',
+    imagenAlt: 'Caja del dispenser de agua frío/calor Aquadisp',
+    precio: null,
+    disponibilidad: 'consultar',
+  },
 ]
+
+/*
+ * HIELO – PRESENTACIONES PENDIENTES
+ * En las fotos y archivos disponibles no figuran tamaños ni pesos de las bolsas de hielo (el campo
+ * "contenido neto" de la etiqueta está en blanco). Cuando la empresa los confirme, agregar un producto
+ * por presentación copiando el bloque de "hielo-bolsa" (con categoriaId: 'hielo'), por ejemplo:
+ *   { id: 'hielo-bolsa-XX', nombre: 'Hielo Romi en bolsa', presentacion: '<peso confirmado>', imagen: '/images/<foto-de-esa-bolsa>.webp', ... }
+ */

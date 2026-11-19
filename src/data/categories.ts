@@ -27,4 +27,11 @@ export const categorias: Category[] = [
     imagen: '/images/cat-hielo.webp',
     imagenAlt: 'Cubos de hielo cristalino',
   },
+  {
+    id: 'dispensers',
+    nombre: 'Dispensers',
+    descripcion: 'Venta y alquiler de dispensers de agua frío/calor.',
+    imagen: '/images/cat-dispensers.webp',
+    imagenAlt: 'Caja del dispenser de agua frío/calor',
+  },
 ]

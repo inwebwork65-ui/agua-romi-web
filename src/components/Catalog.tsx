@@ -3,9 +3,11 @@ import { useId, useMemo, useState } from 'react'
 import { settings } from '../config/settings'
 import { categorias } from '../data/categories'
 import { productos } from '../data/products'
+import { alquilerDispensers } from '../data/rental'
 import type { Product } from '../types'
 import { ProductCard } from './ProductCard'
 import { ProductDetail } from './ProductDetail'
+import { RentalCard } from './RentalCard'
 import { Reveal } from './ui/Reveal'
 
 export const ALL = 'todos'
@@ -65,6 +67,19 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
     }
     return list
   }, [category, query, sort, flag])
+
+  // El servicio de alquiler (no es un producto de venta) respeta la misma categoría y búsqueda.
+  const showRental = useMemo(() => {
+    if (category !== ALL && category !== alquilerDispensers.categoriaId) return false
+    if (flag !== 'todos') return false
+    const q = normalize(query)
+    if (!q) return true
+    const cat = categorias.find((c) => c.id === alquilerDispensers.categoriaId)?.nombre ?? ''
+    return normalize(
+      `${alquilerDispensers.nombre} ${alquilerDispensers.etiqueta} ${alquilerDispensers.descripcion} ${alquilerDispensers.detalle} ${cat}`,
+    ).includes(q)
+  }, [category, query, flag])
+  const total = visible.length + (showRental ? 1 : 0)
 
   const filtersActive = category !== ALL || query.trim() !== '' || flag !== 'todos' || sort !== 'relevancia'
   const resetFilters = () => {
@@ -189,9 +204,7 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
 
         <div className="mt-6 flex items-center justify-between gap-3">
           <p className="text-sm font-bold text-ink-soft" role="status" aria-live="polite">
-            {visible.length === 0
-              ? 'Sin resultados'
-              : `${visible.length} ${visible.length === 1 ? 'producto' : 'productos'}`}
+            {total === 0 ? 'Sin resultados' : `${total} ${total === 1 ? 'producto' : 'productos'}`}
           </p>
           {filtersActive && (
             <button type="button" onClick={resetFilters} className="text-sm font-extrabold text-brand-700 underline underline-offset-4 hover:text-deep">
@@ -200,7 +213,7 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
           )}
         </div>
 
-        {visible.length > 0 ? (
+        {total > 0 ? (
           <ul className="mt-5 grid gap-x-5 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
             {visible.map((p, i) => (
               <li key={p.id}>
@@ -209,6 +222,13 @@ export function Catalog({ category, onCategoryChange }: CatalogProps) {
                 </Reveal>
               </li>
             ))}
+            {showRental && (
+              <li key={alquilerDispensers.id}>
+                <Reveal delay={Math.min(visible.length, 3) * 70} className="h-full">
+                  <RentalCard service={alquilerDispensers} />
+                </Reveal>
+              </li>
+            )}
           </ul>
         ) : (
           <div className="card mt-4 flex flex-col items-center px-6 py-14 text-center">

@@ -29,7 +29,7 @@ export function Categories({ onSelect }: CategoriesProps) {
           <p className="max-w-sm text-ink-soft">Elegí una categoría para ver las presentaciones disponibles.</p>
         </Reveal>
 
-        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
           {categorias.map((cat, i) => {
             const count = productos.filter((p) => p.categoriaId === cat.id).length
             return (

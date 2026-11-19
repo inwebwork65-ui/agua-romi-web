@@ -45,7 +45,20 @@ export function Quality() {
                 </div>
               </div>
 
-              <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+              {/* Logo institucional ASSAL: sobre fondo claro para conservar sus colores originales */}
+              <div className="mt-6 inline-flex self-start rounded-lg bg-white px-4 py-3">
+                <img
+                  src="/images/logo-assal.png"
+                  alt="ASSAL – Agencia Santafesina de Seguridad Alimentaria"
+                  width={560}
+                  height={127}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-9 w-auto sm:h-10"
+                />
+              </div>
+
+              <dl className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
                 <div>
                   <dt className="text-xs font-extrabold uppercase tracking-[0.18em] text-sky">R.N.E.</dt>
                   <dd className="mt-2 whitespace-nowrap text-[1.6rem] font-extrabold leading-none tabular-nums sm:text-[1.75rem]">N° {habilitaciones.rne}</dd>

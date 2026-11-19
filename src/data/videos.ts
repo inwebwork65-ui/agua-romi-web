@@ -16,8 +16,8 @@ export const videosPublicidad: AdVideo[] = [
     id: 'planta',
     titulo: 'Recorrido por la planta',
     descripcion: 'Un vistazo a las instalaciones donde elaboramos el agua.',
-    src: '/videos/planta.mp4',
-    poster: '/images/video-planta.webp',
+    src: '/videos/planta-actual.mp4',
+    poster: '/images/video-planta-actual.webp',
   },
   {
     id: 'hielo',

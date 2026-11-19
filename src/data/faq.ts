@@ -2,7 +2,7 @@ import type { FaqItem } from '../types'
 
 /**
  * PREGUNTAS FRECUENTES (editables).
- * `provisional: true` = respuesta a confirmar con la empresa.
+ * Los horarios de atención son los informados por la empresa.
  */
 export const preguntasFrecuentes: FaqItem[] = [
   {
@@ -21,33 +21,29 @@ export const preguntasFrecuentes: FaqItem[] = [
     id: 'domicilio',
     pregunta: '¿Realizan entregas a domicilio?',
     respuesta: 'Contamos con reparto. Escribinos por WhatsApp para coordinar la entrega de tu pedido.',
-    provisional: true,
   },
   {
     id: 'zonas',
     pregunta: '¿Cuáles son las zonas de cobertura?',
     respuesta: 'Estamos en Villa Cañas, Santa Fe. Consultanos por WhatsApp si llegamos a tu zona.',
-    provisional: true,
   },
   {
     id: 'pagos',
     pregunta: '¿Qué medios de pago aceptan?',
     respuesta:
-      'Los medios de pago se coordinan al confirmar el pedido. Si sos cliente, en la app Autogestión Agua podés ver tu saldo y tus pagos.',
-    provisional: true,
+      'Aceptamos todos los medios de pago. Si tenés alguna consulta sobre cómo realizar tu pago, podés comunicarte con nosotros por WhatsApp.',
   },
   {
     id: 'horarios',
     pregunta: '¿Cuáles son los horarios de atención?',
-    respuesta: 'Escribinos por WhatsApp y te contamos los horarios de atención y de reparto.',
-    provisional: true,
+    respuesta:
+      'Atendemos de lunes a viernes de 8:00 a 12:00 y de 15:00 a 19:00, y los sábados de 8:00 a 12:00. Los domingos permanecemos cerrados.',
   },
   {
     id: 'precios',
     pregunta: '¿Cómo puedo consultar los precios?',
     respuesta:
       'Los precios se confirman por WhatsApp al armar tu pedido. Agregá los productos al carrito y enviá la consulta: te respondemos con los importes vigentes.',
-    provisional: true,
   },
   {
     id: 'app',

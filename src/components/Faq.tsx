@@ -1,7 +1,6 @@
 import { ChevronDown } from 'lucide-react'
 import { preguntasFrecuentes } from '../data/faq'
 import { buildGeneralUrl } from '../lib/whatsapp'
-import { ProvisionalTag } from './ui/ProvisionalTag'
 import { Reveal } from './ui/Reveal'
 import { WhatsAppIcon } from './ui/icons'
 
@@ -28,7 +27,6 @@ export function Faq() {
                 <summary className="flex min-h-[4.25rem] cursor-pointer list-none items-center justify-between gap-6 py-5 text-left text-base font-extrabold text-deep transition-colors hover:text-brand-700 sm:text-lg">
                   <span className="flex flex-wrap items-center gap-2">
                     {f.pregunta}
-                    {f.provisional && <ProvisionalTag />}
                   </span>
                   <span className="grid size-9 shrink-0 place-items-center rounded-full border border-deep/20 text-brand-700 transition duration-300 group-open:rotate-180 group-open:border-brand group-open:bg-brand group-open:text-white">
                     <ChevronDown className="size-5" aria-hidden="true" />

@@ -2,9 +2,7 @@ import type { Service } from '../types'
 
 /**
  * SERVICIOS DE DISTRIBUCIÓN
- * `provisional: true` marca textos que hay que confirmar con la empresa
- * (se ve una etiqueta "A confirmar" mientras `settings.mostrarAvisosProvisorios` sea true).
- * No se informan zonas, horarios ni frecuencias hasta tener los datos oficiales.
+ * No se informan zonas, horarios ni frecuencias de reparto hasta tener los datos oficiales.
  */
 export const servicios: Service[] = [
   {
@@ -12,7 +10,6 @@ export const servicios: Service[] = [
     icono: 'truck',
     titulo: 'Entrega a domicilio',
     descripcion: 'Llevamos tu pedido de agua, soda e hielo. Escribinos por WhatsApp para coordinar la entrega.',
-    provisional: true,
   },
   {
     id: 'hogares',
@@ -25,14 +22,12 @@ export const servicios: Service[] = [
     icono: 'store',
     titulo: 'Para comercios',
     descripcion: 'Hielo, agua y soda para tu local. Consultanos por pedidos frecuentes o por cantidad.',
-    provisional: true,
   },
   {
     id: 'empresas',
     icono: 'building',
     titulo: 'Para empresas',
     descripcion: 'Abastecimiento de agua en bidones para oficinas y empresas.',
-    provisional: true,
   },
   {
     id: 'whatsapp',
@@ -51,13 +46,11 @@ export const servicios: Service[] = [
     icono: 'map',
     titulo: 'Zonas de cobertura',
     descripcion: 'Estamos en Villa Cañas, Santa Fe. Consultá por WhatsApp si llegamos a tu zona.',
-    provisional: true,
   },
   {
     id: 'frecuencia',
     icono: 'clock',
     titulo: 'Frecuencia de reparto',
     descripcion: 'Los días y horarios de reparto se coordinan con cada cliente.',
-    provisional: true,
   },
 ]

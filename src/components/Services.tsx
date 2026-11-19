@@ -1,7 +1,6 @@
 import { Check } from 'lucide-react'
 import { servicios } from '../data/services'
 import { buildGeneralUrl } from '../lib/whatsapp'
-import { ProvisionalTag } from './ui/ProvisionalTag'
 import { Reveal } from './ui/Reveal'
 import { WhatsAppIcon, iconMap } from './ui/icons'
 
@@ -65,7 +64,6 @@ export function Services() {
                     <Icon className="size-7 text-brand" strokeWidth={1.75} aria-hidden="true" />
                     <h4 className="mt-4 flex flex-wrap items-center gap-2 text-lg font-extrabold text-deep">
                       {s.titulo}
-                      {s.provisional && <ProvisionalTag />}
                     </h4>
                     <p className="mt-2 text-sm leading-relaxed text-ink-soft">{s.descripcion}</p>
                   </div>

@@ -23,6 +23,12 @@ export const preguntasFrecuentes: FaqItem[] = [
     respuesta: 'Contamos con reparto. Escribinos por WhatsApp para coordinar la entrega de tu pedido.',
   },
   {
+    id: 'llenado-terceros',
+    pregunta: '¿Realizan llenado de bidones para otros vendedores?',
+    respuesta:
+      'Sí. Además de elaborar nuestros productos, somos planta llenadora y ofrecemos el llenado de bidones para terceros. Escribinos por WhatsApp para consultar cómo coordinarlo.',
+  },
+  {
     id: 'zonas',
     pregunta: '¿Cuáles son las zonas de cobertura?',
     respuesta: 'Estamos en Villa Cañas, Santa Fe. Consultanos por WhatsApp si llegamos a tu zona.',

@@ -30,6 +30,13 @@ export const servicios: Service[] = [
     descripcion: 'Abastecimiento de agua en bidones para oficinas y empresas.',
   },
   {
+    id: 'llenado-terceros',
+    icono: 'droplets',
+    titulo: 'Llenado de bidones para terceros',
+    descripcion:
+      'Además de elaborar nuestros productos, somos planta llenadora: llenamos bidones para otros vendedores. Consultanos cómo coordinarlo.',
+  },
+  {
     id: 'whatsapp',
     icono: 'message',
     titulo: 'Pedidos por WhatsApp',

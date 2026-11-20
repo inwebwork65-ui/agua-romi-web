@@ -1,4 +1,4 @@
-import { Building2, Clock, Home, MapPin, MessageCircle, ShieldCheck, Smartphone, Store, Truck } from 'lucide-react'
+import { Building2, Clock, Droplets, Home, MapPin, MessageCircle, ShieldCheck, Smartphone, Store, Truck } from 'lucide-react'
 import type { LucideIcon } from 'lucide-react'
 import type { SVGProps } from 'react'
 
@@ -8,6 +8,7 @@ export const iconMap: Record<string, LucideIcon> = {
   home: Home,
   store: Store,
   building: Building2,
+  droplets: Droplets,
   message: MessageCircle,
   smartphone: Smartphone,
   clock: Clock,

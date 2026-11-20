@@ -41,7 +41,7 @@ export interface Promotion {
 
 export interface Service {
   id: string
-  icono: 'truck' | 'home' | 'store' | 'building' | 'message' | 'smartphone' | 'clock' | 'map'
+  icono: 'truck' | 'home' | 'store' | 'building' | 'droplets' | 'message' | 'smartphone' | 'clock' | 'map'
   titulo: string
   descripcion: string
   /** `true` = texto provisional hasta recibir la información oficial. */

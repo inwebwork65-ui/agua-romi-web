@@ -54,7 +54,7 @@ export function Services() {
           <h3 className="section-title mt-5 !text-[1.9rem] sm:!text-4xl">Un servicio pensado para cada cliente</h3>
         </Reveal>
 
-        <ul className="mt-10 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="mt-10 grid gap-x-10 gap-y-9 sm:grid-cols-2 lg:grid-cols-3">
           {servicios.map((s, i) => {
             const Icon = iconMap[s.icono]
             return (

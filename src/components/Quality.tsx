@@ -50,8 +50,8 @@ export function Quality() {
                 <img
                   src="/images/logo-assal.png"
                   alt="ASSAL – Agencia Santafesina de Seguridad Alimentaria"
-                  width={560}
-                  height={127}
+                  width={368}
+                  height={108}
                   loading="lazy"
                   decoding="async"
                   className="h-9 w-auto sm:h-10"

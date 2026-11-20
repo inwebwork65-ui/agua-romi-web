@@ -45,8 +45,8 @@ export function Quality() {
                 </div>
               </div>
 
-              {/* Logo institucional ASSAL: sobre fondo claro para conservar sus colores originales */}
-              <div className="mt-6 inline-flex self-start rounded-lg bg-white px-4 py-3">
+              {/* Logo institucional ASSAL, centrado y sin tarjeta */}
+              <div className="mt-8 flex justify-center">
                 <img
                   src="/images/logo-assal.png"
                   alt="ASSAL – Agencia Santafesina de Seguridad Alimentaria"
@@ -54,7 +54,7 @@ export function Quality() {
                   height={108}
                   loading="lazy"
                   decoding="async"
-                  className="h-9 w-auto sm:h-10"
+                  className="h-14 w-auto sm:h-16"
                 />
               </div>
 

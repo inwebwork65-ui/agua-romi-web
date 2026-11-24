@@ -2,10 +2,12 @@ import { useState } from 'react'
 import { About } from './components/About'
 import { AdVideos } from './components/AdVideos'
 import { AppSection } from './components/AppSection'
+import { Certifications } from './components/Certifications'
 import { CartDrawer } from './components/CartDrawer'
 import { Catalog, ALL } from './components/Catalog'
 import { Categories } from './components/Categories'
 import { Contact } from './components/Contact'
+import { Equipment } from './components/Equipment'
 import { Faq } from './components/Faq'
 import { FloatingActions } from './components/FloatingActions'
 import { Footer } from './components/Footer'
@@ -37,6 +39,8 @@ export default function App() {
         <Promotions />
         <Services />
         <Quality />
+        <Equipment />
+        <Certifications />
         <About />
         <AppSection />
         <AdVideos />

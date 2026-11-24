@@ -49,24 +49,48 @@ export const productos: Product[] = [
     presentacion: 'Sifón de 1,5 litros',
     descripcion: 'Soda en sifón retornable de 1,5 litros.',
     categoriaId: 'soda',
-    imagen: '/images/prod-soda.webp',
-    imagenAlt: 'Sifón de soda Romi de 1,5 litros',
+    imagen: '/images/prod-soda-sifon.webp',
+    imagenAlt: 'Sifón de soda Romi de 1,5 litros en su cajón',
     precio: null,
     disponibilidad: 'consultar',
     destacado: true,
   },
   {
-    id: 'hielo-bolsa',
+    id: 'hielo-bolsa-2kg',
     nombre: 'Hielo Romi en bolsa',
     marca: 'Romi',
-    presentacion: 'Bolsa (consultar peso)',
-    descripcion: 'Hielo en bolsa Romi. «Congelamos pureza».',
+    presentacion: '2 kg',
+    descripcion: 'Hielo en bolsa Romi de 2 kg. «Congelamos pureza».',
     categoriaId: 'hielo',
-    imagen: '/images/prod-hielo.webp',
-    imagenAlt: 'Bolsa de hielo Romi',
+    imagen: '/images/prod-hielo-2kg.webp',
+    imagenAlt: 'Bolsa de hielo Romi de 2 kg',
+    precio: null,
+    disponibilidad: 'consultar',
+  },
+  {
+    id: 'hielo-bolsa-4kg',
+    nombre: 'Hielo Romi en bolsa',
+    marca: 'Romi',
+    presentacion: '4 kg',
+    descripcion: 'Hielo en bolsa Romi de 4 kg. «Congelamos pureza».',
+    categoriaId: 'hielo',
+    imagen: '/images/prod-hielo-4kg.webp',
+    imagenAlt: 'Bolsa de hielo Romi de 4 kg',
     precio: null,
     disponibilidad: 'consultar',
     destacado: true,
+  },
+  {
+    id: 'hielo-bolsa-12kg',
+    nombre: 'Hielo Romi en bolsa',
+    marca: 'Romi',
+    presentacion: '12 kg',
+    descripcion: 'Hielo en bolsa Romi de 12 kg. «Congelamos pureza».',
+    categoriaId: 'hielo',
+    imagen: '/images/prod-hielo-12kg.webp',
+    imagenAlt: 'Bolsa de hielo Romi de 12 kg',
+    precio: null,
+    disponibilidad: 'consultar',
   },
   {
     id: 'dispenser-frio-calor',
@@ -81,11 +105,3 @@ export const productos: Product[] = [
     disponibilidad: 'consultar',
   },
 ]
-
-/*
- * HIELO – PRESENTACIONES PENDIENTES
- * En las fotos y archivos disponibles no figuran tamaños ni pesos de las bolsas de hielo (el campo
- * "contenido neto" de la etiqueta está en blanco). Cuando la empresa los confirme, agregar un producto
- * por presentación copiando el bloque de "hielo-bolsa" (con categoriaId: 'hielo'), por ejemplo:
- *   { id: 'hielo-bolsa-XX', nombre: 'Hielo Romi en bolsa', presentacion: '<peso confirmado>', imagen: '/images/<foto-de-esa-bolsa>.webp', ... }
- */

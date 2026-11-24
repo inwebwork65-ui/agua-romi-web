@@ -15,7 +15,7 @@ export const preguntasFrecuentes: FaqItem[] = [
     id: 'productos',
     pregunta: '¿Qué productos están disponibles?',
     respuesta:
-      'Agua en bidones de 12 y 20 litros, soda retornable en sifón de 1,5 litros e hielo en bolsa. La disponibilidad se confirma al hacer el pedido.',
+      'Agua en bidones de 12 y 20 litros, soda retornable en sifón de 1,5 litros, hielo en bolsa de 2, 4 y 12 kg y dispensers de agua frío/calor. La disponibilidad se confirma al hacer el pedido.',
   },
   {
     id: 'domicilio',

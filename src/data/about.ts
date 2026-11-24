@@ -1,62 +1,33 @@
 /**
- * TEXTOS INSTITUCIONALES: "Quiénes somos" y "Calidad y habilitaciones".
- * Sólo se afirma lo que figura en la publicidad de la empresa. La historia y la
- * filosofía quedan como texto provisional hasta recibir la información real.
+ * TEXTOS INSTITUCIONALES: "Quiénes somos" y su historia.
+ * La historia es el relato informado por la empresa: no se agregan fechas ni hechos que no estén en él
+ * y no se calculan años de trayectoria (para que el texto no quede desactualizado).
  */
 export const nosotros = {
-  titulo: 'Hielo y agua con atención cercana',
+  titulo: 'Una historia de esfuerzo, crecimiento y compromiso',
   parrafos: [
-    'Agua Romi es una planta purificadora y embotelladora de agua en bidones de 12 y 20 litros, con soda retornable e hielo en bolsa, ubicada en Villa Cañas, Santa Fe.',
-    'Trabajamos para que cada hogar, comercio y empresa tenga agua, soda e hielo a mano, con atención directa por WhatsApp.',
+    'Agua y Hielos Romi nació en el año 2016 como un emprendimiento familiar, en Villa Cañas, Santa Fe.',
   ],
-  historia: {
-    titulo: 'Historia y trayectoria',
-    texto:
-      'Acá vamos a contar cómo nació Agua Romi y cómo fue creciendo junto a sus clientes. Texto a completar con la historia real de la empresa.',
-    provisional: true,
-  },
-  pilares: [
+  hitos: [
     {
-      id: 'atencion',
-      icono: 'message' as const,
-      titulo: 'Atención directa',
-      texto: 'Pedidos y consultas por WhatsApp, hablando con quien prepara tu pedido.',
+      id: '2016',
+      anio: '2016',
+      titulo: 'Los comienzos',
+      texto:
+        'Todo empezó con una pequeña instalación en el lavadero de la casa de sus fundadores: máquinas de hielo pequeñas y un equipo de ósmosis inversa que purificaba aproximadamente 200 litros de agua por día.',
     },
     {
-      id: 'transparencia',
-      icono: 'smartphone' as const,
-      titulo: 'Transparencia',
-      texto: 'Una app para que cada cliente vea hora, cantidad, historial, saldo y pagos.',
+      id: '2017',
+      anio: '2017',
+      titulo: 'Un galpón propio',
+      texto: 'El crecimiento de la cantidad de clientes hizo necesario alquilar un galpón y adquirir maquinaria de mayor capacidad.',
     },
     {
-      id: 'controles',
-      icono: 'shield' as const,
-      titulo: 'Controles oficiales',
-      texto: 'Productos elaborados bajo los controles de ASSAL Santa Fe.',
+      id: 'actualidad',
+      anio: 'Hoy',
+      titulo: 'Una empresa consolidada',
+      texto:
+        'Año tras año seguimos creciendo: incorporamos equipamiento, mejoramos las instalaciones y ampliamos la cartera de clientes. Hoy Agua Romi es una empresa consolidada en la ciudad, con 4 empleados registrados y una importante cartera de clientes.',
     },
   ],
-}
-
-export const calidad = {
-  titulo: 'Calidad y habilitaciones',
-  lead: 'Todos nuestros productos son elaborados bajo los controles de ASSAL Santa Fe. Estos son los números de habilitación de nuestra planta.',
-  equipamiento: [
-    {
-      id: 'osmosis',
-      titulo: 'Ósmosis inversa',
-      texto: 'Equipo de ósmosis inversa en el tratamiento del agua de nuestra planta.',
-    },
-    {
-      id: 'ozono',
-      titulo: 'Ozonizador',
-      texto: 'Ozonizador incorporado al tratamiento del agua de nuestra planta.',
-    },
-    {
-      id: 'carbon',
-      titulo: 'Filtro de carbón activado',
-      texto: 'Filtro de carbón activado en la línea de tratamiento de la planta.',
-    },
-  ],
-  /** Información a sumar cuando la empresa la confirme (descripción del proceso, controles, análisis). */
-  pendiente: 'Próximamente: descripción del proceso de tratamiento y controles de calidad.',
 }

@@ -1,9 +1,7 @@
 import { nosotros } from '../data/about'
 import { Reveal } from './ui/Reveal'
-import { ProvisionalTag } from './ui/ProvisionalTag'
-import { iconMap } from './ui/icons'
 
-/** Quiénes somos: presentación institucional con fotografías reales del equipo y del local. */
+/** Quiénes somos: historia de la empresa con fotografías reales y una línea de tiempo. */
 export function About() {
   return (
     <section id="nosotros" className="section-y bg-cloud" aria-labelledby="nosotros-titulo">
@@ -11,12 +9,12 @@ export function About() {
         <Reveal>
           <div className="relative pb-12 pr-8 sm:pr-14">
             <img
-              src="/images/nosotros-equipo.webp"
-              alt="Equipo de Agua Romi con ropa de trabajo en la planta, junto a bidones apilados"
+              src="/images/nosotros-planta.webp"
+              alt="Integrante del equipo en la planta, con ropa de trabajo, sosteniendo bidones de agua"
               width={1000}
-              height={1333}
+              height={750}
               loading="lazy"
-              className="aspect-[4/5] w-full rounded-xl object-cover shadow-card"
+              className="aspect-[4/5] w-full rounded-xl object-cover object-[35%_center] shadow-card"
             />
             <img
               src="/images/nosotros-local.webp"
@@ -40,26 +38,17 @@ export function About() {
             ))}
           </div>
 
-          <ul className="mt-10 grid gap-x-8 gap-y-7 border-t border-line pt-8 sm:grid-cols-3">
-            {nosotros.pilares.map((p) => {
-              const Icon = iconMap[p.icono]
-              return (
-                <li key={p.id}>
-                  <Icon className="size-6 text-brand" aria-hidden="true" />
-                  <h3 className="mt-3 text-base font-extrabold">{p.titulo}</h3>
-                  <p className="mt-1.5 text-sm leading-relaxed text-ink-soft">{p.texto}</p>
-                </li>
-              )
-            })}
-          </ul>
-
-          <div className="mt-8 border-l-2 border-brand/40 bg-white py-3 pl-5 pr-4">
-            <h3 className="flex flex-wrap items-center gap-2 text-sm font-extrabold">
-              {nosotros.historia.titulo}
-              {nosotros.historia.provisional && <ProvisionalTag />}
-            </h3>
-            <p className="mt-1 text-sm leading-relaxed text-ink-soft">{nosotros.historia.texto}</p>
-          </div>
+          {/* Línea de tiempo */}
+          <ol className="mt-10 border-l-2 border-brand/30">
+            {nosotros.hitos.map((h) => (
+              <li key={h.id} className="relative pb-8 pl-8 last:pb-0">
+                <span className="absolute -left-[0.6rem] top-1.5 size-4 rounded-full border-[3px] border-cloud bg-brand" aria-hidden="true" />
+                <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-brand-700">{h.anio}</p>
+                <h3 className="mt-1 text-lg font-extrabold leading-snug">{h.titulo}</h3>
+                <p className="mt-1.5 text-sm leading-relaxed text-ink-soft sm:text-base">{h.texto}</p>
+              </li>
+            ))}
+          </ol>
         </Reveal>
       </div>
     </section>

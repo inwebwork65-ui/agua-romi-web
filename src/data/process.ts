@@ -76,7 +76,7 @@ export const etapas: ProcessStage[] = [
     id: 'envasado',
     titulo: 'Envasado',
     texto: 'Finalmente, el agua pasa al proceso de envasado en nuestra envasadora automática.',
-    imagen: '/images/proc-8-envasado.webp',
+    imagen: '/images/proc-8-envasadora.webp',
     imagenAlt: 'Envasadora automática de Agua Romi, con bidones en la línea de llenado',
   },
 ]
